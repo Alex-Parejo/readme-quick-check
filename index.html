@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>README Quick Check</title>
+  <meta name="description" content="Local-first README quality checker. No signup, no tracking, no server calls.">
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: Inter, system-ui, sans-serif; background: #f8fafc; color: #111827; }
+    main { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
+    h1 { font-size: 40px; margin: 0 0 8px; }
+    p { color: #475569; line-height: 1.6; }
+    textarea { width: 100%; min-height: 260px; box-sizing: border-box; border: 1px solid #cbd5e1; border-radius: 8px; padding: 14px; font: 14px ui-monospace, SFMono-Regular, Consolas, monospace; }
+    button { margin-top: 12px; padding: 12px 16px; border: 0; border-radius: 8px; background: #111827; color: white; font-weight: 700; cursor: pointer; }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 20px; }
+    .card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; }
+    #result { white-space: pre-wrap; }
+    a { color: #0369a1; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>README Quick Check</h1>
+    <p>Paste README text. The check runs entirely in your browser and scores common onboarding gaps: install, usage, configuration, tests, license, and contribution notes.</p>
+    <form id="form">
+      <textarea id="readme" placeholder="# Project&#10;&#10;Paste README content here..." required></textarea>
+      <button type="submit">Check README</button>
+    </form>
+    <div class="grid">
+      <section class="card">
+        <h2>Score</h2>
+        <p id="score">Waiting.</p>
+      </section>
+      <section class="card">
+        <h2>Findings</h2>
+        <div id="result">Paste README text to start.</div>
+      </section>
+    </div>
+    <p><a href="https://github.com/Alex-Parejo/readme-quick-check">Source</a></p>
+  </main>
+  <script>
+    function analyze(text) {
+      const body = String(text || '').slice(0, 20000);
+      const lower = body.toLowerCase();
+      const checks = [
+        ['Install section', /(^|\n)#{1,3}\s*(install|installation|setup)/i.test(body)],
+        ['Usage example', /(^|\n)#{1,3}\s*(usage|example|quickstart)/i.test(body) || /```/.test(body)],
+        ['Configuration notes', lower.includes('.env') || lower.includes('config') || lower.includes('environment')],
+        ['Test command', lower.includes('npm test') || lower.includes('pytest') || lower.includes('cargo test') || lower.includes('go test')],
+        ['License mentioned', lower.includes('license')],
+        ['Contributing path', lower.includes('contributing') || lower.includes('pull request')]
+      ];
+      const passed = checks.filter(([, ok]) => ok).length;
+      const missing = checks.filter(([, ok]) => !ok).map(([name]) => name);
+      const score = Math.round((passed / checks.length) * 100);
+      return { score, passed, total: checks.length, missing };
+    }
+
+    document.getElementById('form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const report = analyze(document.getElementById('readme').value);
+      document.getElementById('score').textContent = `${report.score}/100 (${report.passed}/${report.total} checks passed)`;
+      document.getElementById('result').textContent = report.missing.length
+        ? report.missing.map((name) => `Missing ${name}: add a short ${name.toLowerCase()} block.`).join('\n')
+        : 'No common onboarding gaps found.';
+    });
+  </script>
+</body>
+</html>
