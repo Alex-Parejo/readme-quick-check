@@ -23,6 +23,7 @@ Need one repo-specific README fix note?
 - Price: `0.10 USDC` on Base
 - Order page: https://site-five-rust-36.vercel.app/
 - Delivery: one concrete fix note plus a copy-ready README snippet
+- Sample: [`sample-cent-review.md`](sample-cent-review.md)
 
 Send a public repo URL and ask for a `Cent Review`.
 
