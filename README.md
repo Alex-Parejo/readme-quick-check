@@ -34,6 +34,7 @@ Send a public repo URL and ask for a `Cent Review`.
 - Resume improvement note: `2 USDC`
 - README Cent Review: `0.10 USDC`
 - Delivery: concise written fix note, no call required
+- Samples: [`sample-proofreading.md`](sample-proofreading.md), [`sample-resume-note.md`](sample-resume-note.md)
 
 ## License
 
