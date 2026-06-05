@@ -28,6 +28,13 @@ Need one repo-specific README fix note?
 
 Send a public repo URL and ask for a `Cent Review`.
 
+## Other Micro Services
+
+- 1,000-word proofreading: `1 USDC`
+- Resume improvement note: `2 USDC`
+- README Cent Review: `0.10 USDC`
+- Delivery: concise written fix note, no call required
+
 ## License
 
 MIT

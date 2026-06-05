@@ -51,6 +51,11 @@
       <p>Payment rail: USDC on Base to <code>0xe333Fc25FB036494c6D3521f2214288E6fAFE0B6</code>.</p>
       <p><a href="https://github.com/Alex-Parejo/readme-quick-check/blob/master/sample-cent-review.md">View sample Cent Review</a></p>
     </section>
+    <section class="card" aria-labelledby="micro-services">
+      <h2 id="micro-services">Other Micro Services</h2>
+      <p>Small async tasks, no call required: 1,000-word proofreading for 1 USDC, resume improvement note for 2 USDC, or README Cent Review for 0.10 USDC.</p>
+      <button class="secondary" id="copy-services" type="button">Copy services brief</button>
+    </section>
     <p><a href="https://github.com/Alex-Parejo/readme-quick-check">Source</a> | <a href="https://site-five-rust-36.vercel.app/">Paid micro review</a></p>
   </main>
   <script>
@@ -63,6 +68,15 @@ Payment: 0.10 USDC on Base
 Wallet: ${walletAddress}
 Delivery: one concrete fix note + copy-ready README snippet`;
 
+    const servicesBrief = `Micro service order
+
+Task type: proofreading / resume note / README review
+Source text or URL:
+Goal:
+Payment: 0.10-2 USDC on Base
+Wallet: ${walletAddress}
+Delivery: concise written fix note, no call required`;
+
     document.getElementById('copy-order').addEventListener('click', async () => {
       await navigator.clipboard.writeText(orderBrief);
       document.getElementById('copy-order').textContent = 'Copied';
@@ -71,6 +85,11 @@ Delivery: one concrete fix note + copy-ready README snippet`;
     document.getElementById('copy-wallet').addEventListener('click', async () => {
       await navigator.clipboard.writeText(walletAddress);
       document.getElementById('copy-wallet').textContent = 'Wallet copied';
+    });
+
+    document.getElementById('copy-services').addEventListener('click', async () => {
+      await navigator.clipboard.writeText(servicesBrief);
+      document.getElementById('copy-services').textContent = 'Services copied';
     });
 
     function analyze(text) {
