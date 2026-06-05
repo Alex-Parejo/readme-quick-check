@@ -29,6 +29,7 @@
     <div class="actions" aria-label="Paid handoff">
       <a class="button" href="https://site-five-rust-36.vercel.app/">Order a 0.10 USDC Cent Review</a>
       <button class="secondary" id="copy-order" type="button">Copy order brief</button>
+      <button class="secondary" id="copy-wallet" type="button">Copy Base wallet</button>
     </div>
     <form id="form">
       <textarea id="readme" placeholder="# Project&#10;&#10;Paste README content here..." required></textarea>
@@ -47,21 +48,29 @@
     <section class="card" aria-labelledby="paid-handoff">
       <h2 id="paid-handoff">Tiny Paid Handoff</h2>
       <p>For 0.10 USDC on Base, send one public repository URL and get one specific README fix note: what is missing, the exact section to add, and a copy-ready snippet.</p>
+      <p>Payment rail: USDC on Base to <code>0xe333Fc25FB036494c6D3521f2214288E6fAFE0B6</code>.</p>
       <p><a href="https://github.com/Alex-Parejo/readme-quick-check/blob/master/sample-cent-review.md">View sample Cent Review</a></p>
     </section>
     <p><a href="https://github.com/Alex-Parejo/readme-quick-check">Source</a> | <a href="https://site-five-rust-36.vercel.app/">Paid micro review</a></p>
   </main>
   <script>
+    const walletAddress = '0xe333Fc25FB036494c6D3521f2214288E6fAFE0B6';
     const orderBrief = `Cent Review order
 
 Repo URL:
 What I want checked: README onboarding clarity
 Payment: 0.10 USDC on Base
+Wallet: ${walletAddress}
 Delivery: one concrete fix note + copy-ready README snippet`;
 
     document.getElementById('copy-order').addEventListener('click', async () => {
       await navigator.clipboard.writeText(orderBrief);
       document.getElementById('copy-order').textContent = 'Copied';
+    });
+
+    document.getElementById('copy-wallet').addEventListener('click', async () => {
+      await navigator.clipboard.writeText(walletAddress);
+      document.getElementById('copy-wallet').textContent = 'Wallet copied';
     });
 
     function analyze(text) {

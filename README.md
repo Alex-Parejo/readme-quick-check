@@ -21,6 +21,7 @@ Live demo: https://alex-parejo.github.io/readme-quick-check/
 Need one repo-specific README fix note?
 
 - Price: `0.10 USDC` on Base
+- Wallet: `0xe333Fc25FB036494c6D3521f2214288E6fAFE0B6`
 - Order page: https://site-five-rust-36.vercel.app/
 - Delivery: one concrete fix note plus a copy-ready README snippet
 - Sample: [`sample-cent-review.md`](sample-cent-review.md)
