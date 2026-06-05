@@ -1,0 +1,50 @@
+name: Micro service order
+description: Order a tiny async proofreading, resume, or README review task.
+title: "Micro service order: "
+labels: ["order"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        No call required. Please pay on Base before delivery if the task is accepted.
+
+        Wallet: `0xe333Fc25FB036494c6D3521f2214288E6fAFE0B6`
+
+        Prices:
+        - README Cent Review: 0.10 USDC
+        - 1,000-word proofreading: 1 USDC
+        - Resume improvement note: 2 USDC
+  - type: dropdown
+    id: task_type
+    attributes:
+      label: Task type
+      options:
+        - README Cent Review - 0.10 USDC
+        - 1,000-word proofreading - 1 USDC
+        - Resume improvement note - 2 USDC
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source URL or text location
+      description: Add a public repo URL, document link, or paste location.
+      placeholder: https://github.com/user/repo
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should the edit or note improve?
+      placeholder: Improve clarity for first-time users / make this resume section stronger / proofread for grammar.
+    validations:
+      required: true
+  - type: input
+    id: payment_tx
+    attributes:
+      label: Base payment transaction
+      description: Paste the Base transaction link/hash if already paid.
+      placeholder: https://basescan.org/tx/...
+    validations:
+      required: false

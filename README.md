@@ -35,6 +35,7 @@ Send a public repo URL and ask for a `Cent Review`.
 - README Cent Review: `0.10 USDC`
 - Delivery: concise written fix note, no call required
 - Samples: [`sample-proofreading.md`](sample-proofreading.md), [`sample-resume-note.md`](sample-resume-note.md)
+- Order form: https://github.com/Alex-Parejo/readme-quick-check/issues/new?template=micro-service-order.yml
 
 ## License
 
